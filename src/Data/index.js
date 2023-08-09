@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import  fetchApiData  from '../api/data/apiDataSlice';
+import  {fetchApiData}  from '../api/data/api';
 
 class Data extends Component {
   componentDidMount() {

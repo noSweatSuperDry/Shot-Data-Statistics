@@ -1,7 +1,7 @@
 // src/api.js
 
 import axios from 'axios';
-import { fetchDataStart, fetchDataSuccess, fetchDataFailure } from './api/apiDataSlice';
+import { fetchDataStart, fetchDataSuccess, fetchDataFailure } from '../api/data/api';
 
 const apiUrl = 'https://dummyjson.com/users';
 
