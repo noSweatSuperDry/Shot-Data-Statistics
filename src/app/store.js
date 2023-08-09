@@ -1,10 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
-import dataReducer from "../api/data/dataSlice.js";
+// src/store.js
 
-export const store = configureStore({
+import { configureStore } from '@reduxjs/toolkit';
+import apiDataReducer from '../api/data/apiDataSlice';
+
+const store = configureStore({
   reducer: {
-    data: dataReducer,
+    apiData: apiDataReducer,
   },
 });
 
-//Reducers are functions that take the current state and an action as arguments, and return a new state result.
+export default store;
