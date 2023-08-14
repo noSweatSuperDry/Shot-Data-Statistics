@@ -1,3 +1,3 @@
 # What is the purpose of this SAP ? 
-We just made a demo page to show shooting data.
+We just made a demo page to show shooting data using recharts, redux, redux-toolkit
 
