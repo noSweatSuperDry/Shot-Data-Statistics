@@ -3,6 +3,7 @@ import Footer from './Footer'
 import FetchData from './Components/FetchButton'
 import Header from './Header'
 import HitOrMiss from './Components/HitOrMiss'
+import HitInCentre from './Components/HitCentre'
 
 
 export class App extends Component {
@@ -12,6 +13,7 @@ export class App extends Component {
         <Header />
         <FetchData />
         <HitOrMiss />
+        <HitInCentre /> 
         <Footer />
       </div>
     )
