@@ -5,7 +5,7 @@ import { fetchShots } from '../../redux/slice/dataSlice';
 
 class FetchData extends Component {
   render() {
-    console.log(this.props.fetchShots);
+   
     return (
       <div className='refresh'>
         <button className='refresh-button' onClick={this.props.fetchShots}>

@@ -4,10 +4,15 @@ import FetchData from './Components/FetchButton'
 import Header from './Header'
 import HitOrMiss from './Components/HitOrMiss'
 import HitInCentre from './Components/HitCentre'
-
+import { fetchShots } from '../src/redux/slice/dataSlice'
+import { connect } from 'react-redux'
 
 export class App extends Component {
-  render() {
+ componentDidMount() { 
+  this.props.fetchShots()
+}
+
+   render() {
     return (
       <div>
         <Header />
@@ -20,4 +25,10 @@ export class App extends Component {
   }
 }
 
-export default App
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchShots: () => dispatch(fetchShots())
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);

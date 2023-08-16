@@ -33,11 +33,7 @@ class HitOrMiss extends Component {
     return (
       <div>
         <h2>Hit and Miss Ratio</h2>
-        {this.props.shots == null ? (
-          <div>
-            <h1>No data</h1>
-          </div>
-        ) : (
+        
           <div className="splitHalf">
             <div className="side text">
               <p>Total Sessions: {totalSessions}</p>
@@ -71,7 +67,7 @@ class HitOrMiss extends Component {
               </PieChart>
             </div>
           </div>
-        )}
+        
       </div>
     );
   }
