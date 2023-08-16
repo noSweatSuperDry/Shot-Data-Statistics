@@ -1,44 +1,56 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { RadialBarChart } from 'recharts';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { RadialBarChart } from "recharts";
+import "../../index.css";
+import "./style.css";
 
 class HitInCentre extends Component {
   calculateHits = () => {
-    let centerPointHits = 0;
-    let centreSideHit = 0;
+    let eightCircle = 0;
+    let seventhCircle = 0;
     let totalHits = 0;
-
+    let oneToSixthCircle = 0;
     if (this.props.shots) {
       this.props.shots.forEach((shot) => {
         shot.shots.forEach((shotDetail) => {
           if (shotDetail.hit) {
             totalHits++;
-
             if (shotDetail.yStart === 1 && shotDetail.yEnd === 1) {
-              centerPointHits++;
+              eightCircle++;
             } else if (shotDetail.yStart >= 2 && shotDetail.yStart <= 4) {
-              centreSideHit++;
+              seventhCircle++;
+            } else if (shotDetail.yStart <= 8 && shotDetail.yStart >= 6) {
+              oneToSixthCircle++;
+            }
+          } else if (!shotDetail.hit) {
+            totalHits++;
+            if (shotDetail.yEnd <= 8 && shotDetail.yEnd >= 6) {
+              oneToSixthCircle++;
             }
           }
         });
       });
     }
 
-    const error = totalHits - centerPointHits - centreSideHit;
-
-    return { centerPointHits, centreSideHit, error };
+    return { eightCircle, seventhCircle, totalHits, oneToSixthCircle };
   };
 
   render() {
-    const { centerPointHits, centreSideHit, error } = this.calculateHits();
+    const { eightCircle, seventhCircle,  totalHits, oneToSixthCircle } =
+      this.calculateHits();
 
     return (
-      <div>
-        <h2>Hit in Centre Area</h2>
-        <p>8th Circle Hits: {centerPointHits}</p>
-        <p>7th Circle Hits: {centreSideHit}</p>
-        <p>Error: {error}</p>
-        <RadialBarChart />
+      <div className="backgroundColor">
+        <h2>Shots in Central Area</h2>
+        <div className="side text">
+          <p>8th Circle : {eightCircle}</p>
+          <p>7th Circle : {seventhCircle}</p>
+          <p>6th to 1st Circle: {oneToSixthCircle}</p>
+          <p>Total shots: {totalHits}</p>
+        </div>
+        <div className="side">
+          <RadialBarChart />
+        </div>
       </div>
     );
   }

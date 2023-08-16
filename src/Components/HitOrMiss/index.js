@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { PieChart, Pie, Cell, Legend } from "recharts";
 import "./style.css";
+import "../../index.css"
 
 class HitOrMiss extends Component {
   render() {
