@@ -6,63 +6,47 @@ import "./style.css";
 
 class HitInCentre extends Component {
   calculateHits = () => {
-    const initialState = {
-      eightCircle: 0,
-      seventhCircle: 0,
-      oneToSixthCircle: 0,
-    };
-  
-    const { shots } = this.props;
-  
-    if (shots) {
-      return shots.reduce((hits, heat) => {
-        heat.shots.forEach((shotDetail) => {
+    let eightCircle = 0;
+    let seventhCircle = 0;
+    
+    let oneToSixthCircle = 0;
+    if (this.props.shots) {
+      this.props.shots.forEach((shot) => {
+        shot.shots.forEach((shotDetail) => {
           if (shotDetail.hit) {
-            console.log(shotDetail);
             if (shotDetail.yStart === 1 && shotDetail.yEnd === 1) {
-              hits.eightCircle++;
-            } else if (shotDetail.yEnd >= 2 && shotDetail.yEnd <= 4) {
-              hits.seventhCircle++;
-            } else if (shotDetail.xEnd >= 2 && shotDetail.xEnd <= 4) {
-              hits.seventhCircle++;
-            } else if (
-              (shotDetail.yEnd >= 6 && shotDetail.yEnd <= 8) ||
-              (shotDetail.xEnd >= 6 && shotDetail.xEnd <= 8)
-            ) {
-              hits.oneToSixthCircle++;
+              eightCircle++;
+            } else if (shotDetail.yStart >= 2 && shotDetail.yStart <= 4) {
+              seventhCircle++;
+            } else if (shotDetail.yStart >= 6 && shotDetail.yStart <= 8) {
+              oneToSixthCircle++;
             }
-          } else {
-            if (
-              (shotDetail.xEnd >= 6 && shotDetail.xEnd <= 8) ||
-              (shotDetail.yEnd >= 6 && shotDetail.yEnd <= 8)
-            ) {
-              hits.oneToSixthCircle++;
+          } else if (!shotDetail.hit) {
+            if (shotDetail.yStart >= 6 && shotDetail.yStart <= 8) {
+              oneToSixthCircle++;
             }
           }
         });
-        return hits;
-      }, initialState);
+      });
     }
-  
-    return initialState;
-  };
-  
 
-  renderHits = ({ eightCircle, seventhCircle, oneToSixthCircle }) => (
-    <div className="side text">
-      <p>8th Circle : {eightCircle}</p>
-      <p>7th Circle : {seventhCircle}</p>
-      <p>6th to 1st Circle: {oneToSixthCircle}</p>
-    </div>
-  );
+
+
+    return { eightCircle, seventhCircle,  oneToSixthCircle };
+  };
 
   render() {
-    const hits = this.calculateHits();
+    const { eightCircle, seventhCircle,  oneToSixthCircle } =
+      this.calculateHits();
 
     return (
       <div className="backgroundColor">
         <h2>Shots in Central Area</h2>
-        {this.renderHits(hits)}
+        <div className="side text">
+          <p>8th Circle : {eightCircle}</p>
+          <p>7th Circle : {seventhCircle}</p>
+          <p>6th to 1st Circle: {oneToSixthCircle}</p>
+          </div>
         <div className="side">
           <RadialBarChart />
         </div>
