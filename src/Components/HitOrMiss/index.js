@@ -57,6 +57,7 @@ class HitOrMiss extends Component {
             outerRadius={60} // Adjust the outer radius to make the pie smaller
             fill="#8884d8"
             label
+            dataKey="value"
           >
             {[0, 1].map((index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index]} />
