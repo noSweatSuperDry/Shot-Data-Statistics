@@ -16,13 +16,13 @@ class HitInCentre extends Component {
           if (shotDetail.hit) {
             if (shotDetail.yStart === 1 && shotDetail.yEnd === 1) {
               eightCircle++;
-            } else if (shotDetail.yStart >= 2 && shotDetail.yStart <= 4) {
+            } else if (shotDetail.yStart >= 2 && shotDetail.yStart <= 5) {
               seventhCircle++;
-            } else if (shotDetail.yStart >= 5 && shotDetail.yStart <= 8) {
+            } else if (shotDetail.yStart > 2 && shotDetail.yStart <= 8) {
               oneToSixthCircle++;
             }
           } else if (!shotDetail.hit) {
-            if (shotDetail.yStart >= 5 && shotDetail.yStart <= 8) {
+            if (shotDetail.yStart > 2 && shotDetail.yStart <= 8) {
               oneToSixthCircle++;
             }
           }
