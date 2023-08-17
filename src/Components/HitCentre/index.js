@@ -18,11 +18,11 @@ class HitInCentre extends Component {
               eightCircle++;
             } else if (shotDetail.yStart >= 2 && shotDetail.yStart <= 4) {
               seventhCircle++;
-            } else if (shotDetail.yStart >= 6 && shotDetail.yStart <= 8) {
+            } else if (shotDetail.yStart >= 5 && shotDetail.yStart <= 8) {
               oneToSixthCircle++;
             }
           } else if (!shotDetail.hit) {
-            if (shotDetail.yStart >= 6 && shotDetail.yStart <= 8) {
+            if (shotDetail.yStart >= 5 && shotDetail.yStart <= 8) {
               oneToSixthCircle++;
             }
           }
@@ -31,7 +31,7 @@ class HitInCentre extends Component {
     }
 
 
-
+console.log(eightCircle, seventhCircle,  oneToSixthCircle);
     return { eightCircle, seventhCircle,  oneToSixthCircle };
   };
 
